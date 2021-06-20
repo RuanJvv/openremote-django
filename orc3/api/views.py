@@ -23,9 +23,9 @@ sampleData = {
 }
 
 
-def filter(text):
-    text = text.replace('<', ' ').replace(
-        '>', '').replace('(', '').replace(')', '')
+# def filter(text):
+# text = text.replace('<', ' ').replace(
+#   '>', '').replace('(', '').replace(')', '')
 
 
 @csrf_exempt

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .apps import ApiConfig
+from .apps import PredictorConfig
 
 # Create your views here.
 from django.http.response import Http404, HttpResponse, JsonResponse
@@ -7,6 +7,8 @@ from django.http.response import Http404, HttpResponse, JsonResponse
 import json
 from django.views.decorators.csrf import csrf_exempt
 from django.db import IntegrityError
+from django.http import JsonResponse
+from rest_framework.views import APIView
 
 samapleData = {
     "12:00": "100",
@@ -26,6 +28,22 @@ samapleData = {
 def filter(text):
     text = text.replace('<', ' ').replace(
         '>', '').replace('(', '').replace(')', '')
+
+
+class call_model(APIView):
+    def get(self, request):
+        if request.method == 'GET':
+            # get sound from request
+            tweet = request.GET.get('tweet')
+            print("Tweet is ", tweet)
+            vectorizeTweet = PredictorConfig.vectorizer.transform([tweet])
+
+            prediction = PredictorConfig.regressor.predict(vectorizeTweet)[0]
+
+            response = {'IsHateSpeech': bool(prediction)}
+            print(response)
+
+            return JsonResponse(response)
 
 
 @csrf_exempt

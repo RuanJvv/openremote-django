@@ -1,8 +1,12 @@
-from django.http import response
+from django.shortcuts import render
+from .apps import ApiConfig
+
+# Create your views here.
 from django.http.response import Http404, HttpResponse, JsonResponse
+
+import json
 from django.views.decorators.csrf import csrf_exempt
 from django.db import IntegrityError
-import json
 
 samapleData = {
     "12:00": "100",

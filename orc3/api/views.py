@@ -29,19 +29,6 @@ def filter(text):
         '>', '').replace('(', '').replace(')', '')
 
 
-class call_model(APIView):
-    def get(request):
-        if request.method == 'GET':
-            # get data from request
-            data = request.GET.get()
-
-            vectorizedData = ModelConfig.vectorizer.transform([data])
-
-            prediction = ModelConfig.regressor.predict(vectorizedData)[0]
-
-            return JsonResponse(prediction)
-
-
 @csrf_exempt
 def get(request):
     filter(request)

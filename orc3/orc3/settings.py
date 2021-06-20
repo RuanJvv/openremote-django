@@ -15,6 +15,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
+MODELS = os.path.join(BASE_DIR, 'predictor/models')
 
 # Application definition
 
@@ -28,7 +29,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'orc3',
     'website',
-    'corsheaders'
+    'corsheaders',
+    'predictor'
 ]
 
 MIDDLEWARE = [

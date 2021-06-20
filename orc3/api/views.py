@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from .apps import ModelConfig
 
 from django.http.response import Http404, HttpResponse, JsonResponse
 

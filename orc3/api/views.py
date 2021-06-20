@@ -1,7 +1,6 @@
 from django.shortcuts import render
-from .apps import PredictorConfig
+from .apps import ModelConfig
 
-# Create your views here.
 from django.http.response import Http404, HttpResponse, JsonResponse
 
 import json
@@ -10,7 +9,7 @@ from django.db import IntegrityError
 from django.http import JsonResponse
 from rest_framework.views import APIView
 
-samapleData = {
+sampleData = {
     "12:00": "100",
     "13:00": "200",
     "14:00": "250",
@@ -31,17 +30,15 @@ def filter(text):
 
 
 class call_model(APIView):
-    def get(self, request):
+    def get(request):
         if request.method == 'GET':
-            # get sound from request
-            tweet = request.GET.get('tweet')
-            print("Tweet is ", tweet)
-            vectorizeTweet = PredictorConfig.vectorizer.transform([tweet])
+            # get data from request
+            data = request.GET.get()
+            vectorizedData = ModelConfig.vectorizer.transform([data])
 
-            prediction = PredictorConfig.regressor.predict(vectorizeTweet)[0]
+            prediction = ModelConfig.regressor.predict(vectorizedData)[0]
 
             response = {'IsHateSpeech': bool(prediction)}
-            print(response)
 
             return JsonResponse(response)
 
@@ -55,7 +52,7 @@ def get(request):
     body = json.loads(body_unicode)
     try:
         response = JsonResponse(
-            samapleData, status=200
+            sampleData, status=200
         )
         return response
     except IntegrityError:

@@ -1,9 +1,16 @@
+import pickle
+
 from django.apps import AppConfig
-import html
-import pathlib
 import os
 
 
-class ApiConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'api'
+class ModelConfig(AppConfig):
+
+    path = os.path.join('../models/TrainedModel.p')
+
+    with open(path, 'rb') as pickled:
+        data = pickle.load(pickled)
+    print(data)
+
+    regressor = data['regressor']
+    vectorizer = data['vectorizer']

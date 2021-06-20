@@ -3,7 +3,7 @@ import pickle
 import os
 
 
-class PredictorConfig(AppConfig):
+class ModelConfig(AppConfig):
 
     path = os.path.join('../models/TrainedModel.p')
 

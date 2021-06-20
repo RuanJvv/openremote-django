@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 45%;
+    border-style: solid;
+    border-radius: 10px;
+}
+
+.mapGridColHeight {
+    height: 35vh;
+
+}
+.mapSection {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+.mapform {
+    border-style: solid;
+    border-radius: 10px;
+}
+.mapLable {
+    width: 125px;
+    margin-left: 20px;
+}
+.button-width {
+    width: 20%;
+}
+.row-height {
+    background-color: red;
+}
+
+#predictionchartZone {
+    width: 60%; !important;
+}

@@ -34,13 +34,12 @@ class call_model(APIView):
         if request.method == 'GET':
             # get data from request
             data = request.GET.get()
+
             vectorizedData = ModelConfig.vectorizer.transform([data])
 
             prediction = ModelConfig.regressor.predict(vectorizedData)[0]
 
-            response = {'IsHateSpeech': bool(prediction)}
-
-            return JsonResponse(response)
+            return JsonResponse(prediction)
 
 
 @csrf_exempt

@@ -7,7 +7,6 @@ var map = new mapboxgl.Map({
     zoom: 13
 });
 
-
 var geocoder = new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
     mapboxgl: mapboxgl
@@ -15,13 +14,12 @@ var geocoder = new MapboxGeocoder({
 
 map.addControl(geocoder);
 
-
 geocoder.on('results', function(response) {
     console.log(response.request.response.body.features);
     var array = response.request.response.body.features;
     var coordinates = array[0].geometry.coordinates;
-    lat = coordinates[1];
-    long = coordinates[0];
+    let lat = coordinates[1];
+    let long = coordinates[0];
     document.getElementById('mapLat').innerHTML = lat;
     document.getElementById('mapLong').innerHTML = long;
 })
@@ -37,7 +35,7 @@ function MakeMyChart(data) {
         labels.push(timedate[1] + ":00");
         temps.push(data[index].temp)
     }
-    var data = {
+    data = {
         labels: labels,
         datasets: [{
             label: 'Temp',

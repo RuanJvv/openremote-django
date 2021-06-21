@@ -204,7 +204,7 @@ function ISUserRangeValid() {
         alert("Please insure that panel azimuth is a number");
         return false
     }
-    if (isNaN(document.getElementById("solarPanelCap").value) || document.getElementById("solarPanelazimuth").value.trim().length <= 0) {
+    if (isNaN(document.getElementById("solarPanelCap").value) || document.getElementById("solarPanelCap").value.trim().length <= 0) {
         alert("Please insure that panel capacity is a number");
         return false
     }

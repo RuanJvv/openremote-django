@@ -30,7 +30,7 @@ sampleData = {
 
 @csrf_exempt
 def get(request):
-    filter(request)
+    # filter(request)
     if request.method != 'POST':
         raise Http404
     body_unicode = request.body.decode('utf-8')

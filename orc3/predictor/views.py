@@ -7,10 +7,9 @@ from rest_framework.views import APIView
 class call_model(APIView):
     def get(self, request):
         if request.method == 'GET':
-            # get sound from request
+            # get data from request
             sound = request.GET.get('sound')
-
-            # vectorize sound
+            # vectorize data
             vector = PredictorConfig.vectorizer.transform([sound])
             # predict based on vector
             prediction = PredictorConfig.regressor.predict(vector)[0]

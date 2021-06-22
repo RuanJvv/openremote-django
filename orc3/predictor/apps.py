@@ -10,6 +10,7 @@ class PredictorConfig(AppConfig):
 
     # load models into separate variables
     # these will be accessible via this class
+
     with open(path, 'rb') as pickled:
         data = pickle.load(pickled)
     regressor = data['regressor']

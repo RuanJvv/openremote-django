@@ -28,8 +28,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'orc3',
     'website',
-    'corsheaders',
-    'predictor',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
